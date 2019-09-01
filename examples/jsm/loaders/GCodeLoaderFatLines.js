@@ -21,6 +21,7 @@ import {
 } from "../../../build/three.module.js";
 
 import { LineSegments2 } from "../lines/LineSegments2.js";
+import { LineSegmentsGeometry } from "../lines/LineSegmentsGeometry.js";
 import { LineMaterial } from '../lines/LineMaterial.js';
 
 var GCodeLoader = function ( manager ) {
@@ -195,8 +196,13 @@ GCodeLoader.prototype = {
 
 		function addObject( vertex, extruding ) {
 
-			var geometry = new BufferGeometry();
-			geometry.addAttribute( 'position', new Float32BufferAttribute( vertex, 3 ) );
+			//var geometry = new BufferGeometry();
+			var geometry = new LineSegmentsGeometry();
+			//geometry.addAttribute( 'position', new Float32BufferAttribute( vertex, 3 ) );
+			geometry.setPositions( vertex );
+
+			// var geometry2 = new LineSegmentsGeometry();
+			// geometry2.fromLineSegements(geometry);
 
 			var segments = new LineSegments2( geometry, extruding ? extrudingMaterial : pathMaterial );
 			segments.name = 'layer' + i;
