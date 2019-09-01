@@ -20,9 +20,8 @@ import {
 	LineSegments
 } from "../../../build/three.module.js";
 
-import { Line2 } from '../jsm/lines/Line2.js';
-import { LineMaterial } from '../jsm/lines/LineMaterial.js';
-import { LineGeometry } from '../jsm/lines/LineGeometry.js';
+import { LineSegments2 } from "../lines/LineSegments2.js";
+import { LineMaterial } from '../lines/LineMaterial.js';
 
 var GCodeLoader = function ( manager ) {
 
