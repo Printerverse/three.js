@@ -20,6 +20,10 @@ import {
 	LineSegments
 } from "../../../build/three.module.js";
 
+import { Line2 } from '../jsm/lines/Line2.js';
+import { LineMaterial } from '../jsm/lines/LineMaterial.js';
+import { LineGeometry } from '../jsm/lines/LineGeometry.js';
+
 var GCodeLoader = function ( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
@@ -63,7 +67,7 @@ GCodeLoader.prototype = {
 		var pathMaterial = new LineBasicMaterial( { color: 0xFF0000 } );
 		pathMaterial.name = 'path';
 
-		var extrudingMaterial = new LineBasicMaterial( { color: 0x00FF00 } );
+		var extrudingMaterial = new LineMaterial( { color: 0x00FF00, linewidth: 5 } );
 		extrudingMaterial.name = 'extruded';
 
 		function newLayer( line ) {
@@ -195,7 +199,7 @@ GCodeLoader.prototype = {
 			var geometry = new BufferGeometry();
 			geometry.addAttribute( 'position', new Float32BufferAttribute( vertex, 3 ) );
 
-			var segments = new LineSegments( geometry, extruding ? extrudingMaterial : pathMaterial );
+			var segments = new LineSegments2( geometry, extruding ? extrudingMaterial : pathMaterial );
 			segments.name = 'layer' + i;
 			object.add( segments );
 
