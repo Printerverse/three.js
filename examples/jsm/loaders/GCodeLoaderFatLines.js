@@ -64,7 +64,7 @@ GCodeLoader.prototype = {
 
 		var currentLayer = undefined;
 
-		var pathMaterial = new LineBasicMaterial( { color: 0xFF0000 } );
+		var pathMaterial = new LineBasicMaterial( { color: 0x00FF00 } );
 		pathMaterial.name = 'path';
 
 		var extrudingMaterial = new LineMaterial( { color: 0x00FF00, linewidth: 5 } );
